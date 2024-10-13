@@ -1,0 +1,20 @@
+name: linting
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  test-code:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: download kube-score
+        run: | 
+          wget kube-score_1.19.0_linux_amd64
+          chmod +x kube-score_1.19.0_linux_amd64
+          mv kube-score_1.19.0_linux_amd64 /usr/local/bin/kube-score
+      - name: Test Code
+        run: /usr/local/bin/kube-score score *yml
