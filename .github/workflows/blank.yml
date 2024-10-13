@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: download kube-score
         run: | 
-          wget kube-score_1.19.0_linux_amd64
+          wget https://github.com/zegl/kube-score/releases/download/v1.19.0/kube-score_1.19.0_linux_amd64
           chmod +x kube-score_1.19.0_linux_amd64
           mv kube-score_1.19.0_linux_amd64 /usr/local/bin/kube-score
       - name: Test Code
